@@ -1,4 +1,4 @@
-package io.vdev.util;
+package socket;
 
 public class Sender {
     private String ip;
