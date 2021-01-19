@@ -1,5 +1,7 @@
 package io.vdev.socket;
 
+import io.vdev.util.P2PUtil;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
@@ -23,7 +25,7 @@ class ClientHandlerRunnable implements Runnable {
             if((inputStream.read(buffer, 0, bufferLength)) > -1) {
                 Sender sender = new Sender(clientSocket.getInetAddress().getHostAddress(),
                         clientSocket.getPort());
-                Message msg = new Message(sender, buffer);
+                Message msg = new Message(sender, P2PUtil.decode(buffer));
                 if(listener != null) {
                     listener.onMessage(msg);
                 }
