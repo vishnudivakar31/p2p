@@ -23,8 +23,7 @@ class SendRunnable implements Runnable{
             Socket clientSocket = new Socket(message.getSender().getIp(),
                     message.getSender().getPort());
             OutputStream out = clientSocket.getOutputStream();
-            byte[] writeBuffer = P2PUtil.convertToByteArray(message);
-            out.write(P2PUtil.encode(writeBuffer));
+            out.write(P2PUtil.encode(message.getDataBytes()));
             nodeListener.onCommStatus(true, "success: " + new Date().getTime());
             clientSocket.close();
         } catch (IOException e) {

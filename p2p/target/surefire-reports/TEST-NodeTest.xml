@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="P2PUtilTest" time="0.048" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="NodeTest" time="2.008" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="gopherProxySet" value="false"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -61,7 +61,12 @@
     <property name="java.class.version" value="52.0"/>
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase name="serializationTest" classname="P2PUtilTest" time="0.031"/>
-  <testcase name="testCoding" classname="P2PUtilTest" time="0.002"/>
-  <testcase name="codingAndSerializationTest" classname="P2PUtilTest" time="0.001"/>
+  <testcase name="p2pTest" classname="NodeTest" time="2.008">
+    <system-out><![CDATA[Success: success: 1611023388332
+ip: localhost -- port: 52326
+msg: [B@7ac869ae
+Hello
+Success: success: 1611023388334
+]]></system-out>
+  </testcase>
 </testsuite>

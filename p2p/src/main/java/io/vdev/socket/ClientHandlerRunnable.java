@@ -27,14 +27,16 @@ class ClientHandlerRunnable implements Runnable {
             InputStream inputStream = clientSocket.getInputStream();
             if((receivedLength = inputStream.read(buffer, 0, bufferLength)) > -1) {
                 byte[] decodedBytes = P2PUtil.decode(Arrays.copyOf(buffer, receivedLength));
-                Message msg = (Message) P2PUtil.convertFromByteArray(decodedBytes);
+                Sender sender = new Sender(clientSocket.getInetAddress().getHostName(),
+                        clientSocket.getPort());
+                Message msg = new Message(sender, decodedBytes);
                 if(listener != null) {
                     listener.onMessage(msg);
                     listener.onCommStatus(true, "success: " + new Date().getTime());
                 }
             }
             clientSocket.close();
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
             listener.onCommStatus(false, e.getMessage());
         }
     }
