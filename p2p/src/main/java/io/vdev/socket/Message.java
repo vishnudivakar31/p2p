@@ -1,11 +1,8 @@
-package socket;
+package io.vdev.socket;
 
 public class Message {
     private Sender sender;
     private byte[] dataBytes;
-
-    public Message() {
-    }
 
     public Message(Sender sender, byte[] dataBytes) {
         this.sender = sender;

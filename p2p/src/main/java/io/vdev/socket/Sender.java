@@ -1,11 +1,8 @@
-package socket;
+package io.vdev.socket;
 
 public class Sender {
     private String ip;
     private int port;
-
-    public Sender() {
-    }
 
     public Sender(String ip, int port) {
         this.ip = ip;
