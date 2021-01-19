@@ -1,6 +1,8 @@
 package io.vdev.socket;
 
-public class Message {
+import java.io.Serializable;
+
+public class Message implements Serializable {
     private Sender sender;
     private byte[] dataBytes;
 
@@ -23,5 +25,9 @@ public class Message {
 
     public void setDataBytes(byte[] dataBytes) {
         this.dataBytes = dataBytes;
+    }
+
+    public String toString() {
+        return sender.toString() + "\n" + "msg: " + dataBytes.toString();
     }
 }

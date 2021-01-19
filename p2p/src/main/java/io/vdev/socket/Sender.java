@@ -1,6 +1,8 @@
 package io.vdev.socket;
 
-public class Sender {
+import java.io.Serializable;
+
+public class Sender implements Serializable {
     private String ip;
     private int port;
 
@@ -23,5 +25,9 @@ public class Sender {
 
     public void setPort(int port) {
         this.port = port;
+    }
+
+    public String toString() {
+        return "ip: " + ip + " -- port: " + port;
     }
 }

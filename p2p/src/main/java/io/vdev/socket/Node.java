@@ -1,25 +1,20 @@
 package io.vdev.socket;
 
 public class Node {
-    private static Node singleInstance = null;
     private Integer port = null;
+    private NodeListener listener = null;
 
-    private Node() {
+    public Node(Integer port, NodeListener listener) {
+        this.port = port;
+        this.listener = listener;
+        ServerRunnable serverRunnable = new ServerRunnable(port, listener);
+        ThreadExecutor.getInstance().execute(serverRunnable);
     }
 
-    public static Node getInstance() {
-        if (singleInstance == null) {
-            singleInstance = new Node();
-        }
-        return singleInstance;
-    }
 
-    public void start(int port, NodeListener nodeListener) {
-        if (this.port == null) {
-            this.port = port;
-            ServerRunnable serverRunnable = new ServerRunnable(port, nodeListener);
-            ThreadExecutor.getInstance().execute(serverRunnable);
-        }
+    public void sendToNode(Message msg) {
+        SendRunnable sender = new SendRunnable(msg, listener);
+        ThreadExecutor.getInstance().execute(sender);
     }
 
 }
